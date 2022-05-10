@@ -1,0 +1,163 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start" class="text-truncate">
+      Editar {{ contacto.fullname }}
+    </ion-title>
+    <ion-buttons  (click)="save()" slot="end">
+      <ion-button><ion-icon slot="icon-only" name="save-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="bg-sdb">
+    <ion-item>
+      <ion-label position="floating">Nombres</ion-label>
+      <ion-input type="string" name="firstname" [(ngModel)]="contacto.firstname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input type="string" name="firstname" [(ngModel)]="contacto.lastname"></ion-input>
+    </ion-item>
+
+    <!-- FORMATO DE FECHAS 1920-01-31 -->
+    
+    <ion-item>
+      <ion-label position="floating">Country</ion-label>
+      <ion-select [(ngModel)]="contacto.country_id" value="{{contacto.country_id}}"  name="country_id" id="country_id" placeholder="Seleccionar país">
+        <ion-select-option *ngFor="let country of countries" value="{{country.id}}">{{ country.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- CUMPLEAÑOS -->
+    <ion-item-divider>
+      <ion-label>Fecha de nacimiento</ion-label>
+    </ion-item-divider>
+    
+    <ion-grid class="bg-white">
+        <ion-row>
+          <ion-col size="4">
+            <ion-select [(ngModel)]=" birthday[2] " name="bday" placeholder="Día">
+              <ion-select-option *ngFor="let day of days" required value="{{day}}">{{ day }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="4">
+            <ion-select [(ngModel)]=" birthday[1] " name="bmonth" placeholder="Mes">
+              <ion-select-option *ngFor="let month of months | keyvalue" required value="{{month.value}}">{{ month.key }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="4">
+            <ion-select [(ngModel)]=" birthday[0] " name="byear" placeholder="Año">
+              <ion-select-option *ngFor="let year of years" required value="{{year}}">{{ year }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    
+    <ion-item>
+      <ion-label position="floating">Inspectoría</ion-label>
+      <ion-select [(ngModel)]="contacto.outside_inspectory_id" value="{{contacto.outside_inspectory_id}}" name="inspectoria" id="inspectoria" placeholder="Seleccionar...">
+        <ion-select-option *ngFor="let inspect of inspectorias" value="{{inspect.id}}">{{ inspect.text }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email 1</ion-label>
+      <ion-input type="string" name="email_1" [(ngModel)]="contacto.email_1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email 2</ion-label>
+      <ion-input type="string" name="email_2" [(ngModel)]="contacto.email_2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input type="string" name="phone" [(ngModel)]="contacto.phone" placeholder="(000) 00000000"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nivel de formación</ion-label>
+      <ion-select [(ngModel)]="contacto.formation_level" value="{{contacto.formation_level}}" name="formation_level" id="formation_level" placeholder="Seleccionar...">
+          <ion-select-option *ngFor="let fl of formationLevels" value="{{fl.id}}">{{ fl.text }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Año de formación</ion-label>
+      <ion-select [(ngModel)]="contacto.year_level" value="{{ contacto.year_level }}" name="formation_year" id="formation_year" placeholder="Seleccionar...">
+          <ion-select-option *ngFor="let fy of formationYears" value="{{fy.id}}">{{ fy.text }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Casa Asignada</ion-label>
+      <ion-select [(ngModel)]="contacto.home_id" value="{{ contacto.home_id }}" name="home_id" placeholder="Seleccionar...">
+        <ion-select-option *ngFor="let item of homes" (selected)="item.id == contacto.home_id"  value="{{item.id}}">{{ item.title }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+
+    <!-- PRIMERA PROFESION -->
+    <!-- <ion-item-divider>
+      <ion-label>Fecha de primera profesion</ion-label>
+      </ion-item-divider>
+    <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-select [(ngModel)]=" profession_date[2] " placeholder="Día">
+              <ion-select-option *ngFor="let day of days" required value="{{day}}">{{ day }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select [(ngModel)]=" profession_date[1] " placeholder="Mes">
+              <ion-select-option *ngFor="let month of months | keyvalue" required value="{{month.value}}">{{ month.key }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select [(ngModel)]=" profession_date[0] " placeholder="Año">
+              <ion-select-option *ngFor="let year of years" required value="{{year}}">{{ year }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+    </ion-item> -->
+    
+    <!-- ORDENACION SACERDOTAL -->
+    <!-- <ion-item-divider>
+      <ion-label>Fecha de ordenación sacerdotal</ion-label>
+      </ion-item-divider>
+    <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-select [(ngModel)]=" ordination_date[2] " placeholder="Día">
+              <ion-select-option *ngFor="let day of days" required value="{{day}}">{{ day }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select [(ngModel)]=" ordination_date[1] " placeholder="Mes">
+              <ion-select-option *ngFor="let month of months | keyvalue" required value="{{month.value}}">{{ month.key }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select [(ngModel)]=" ordination_date[0] " placeholder="Año">
+              <ion-select-option *ngFor="let year of years" required value="{{year}}">{{ year }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+    </ion-item>
+
+    
+    
+    <ion-item>
+      <ion-label position="floating">Telefono celular</ion-label>
+      <ion-input type="string" name="mobile" [(ngModel)]="contacto.mobile" placeholder="(000) 00000000"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Estilo de vida</ion-label>
+      <ion-select [(ngModel)]="contacto.lifestyle_id" value="{{ contacto.lifestyle_id }}" name="home_id"  placeholder="Seleccionar...">
+        <ion-select-option *ngFor="let item of lifestyles; trackBy: item?.id" value="{{item.id}}">{{ item.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+     -->
+
+
+  </section>
+</ion-content>

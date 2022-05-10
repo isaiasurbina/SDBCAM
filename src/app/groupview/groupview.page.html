@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    
+    <ion-buttons slot="end">
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-item-divider>
+    {{ groupname }}
+  </ion-item-divider> -->
+  <section class="bg-sdb">
+      <div class="container">
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                <img *ngIf="api_params.group == 23"  src="assets/asociaciones/LogoAIS.png" class="ion-padding logo-asociaciones">
+                <img *ngIf="api_params.group == 22"  src="assets/asociaciones/LogoASDB.png" class="ion-padding logo-asociaciones">
+                <img *ngIf="api_params.group == 24"  src="assets/asociaciones/LogoIS.png" class="ion-padding logo-asociaciones">
+                <img *ngIf="api_params.group == 25"  src="assets/asociaciones/LogoACS.png" class="ion-padding logo-asociaciones">
+                <img *ngIf="api_params.group == 26"  src="assets/asociaciones/LogoAOSDB.png" class="ion-padding logo-asociaciones">
+                <img *ngIf="api_params.group == 27"  src="assets/asociaciones/LogoASFS.png" class="ion-padding logo-asociaciones">
+                <ion-card-title class="ion-text-center">{{ groupname }}</ion-card-title>
+              </ion-card-header>
+              <!-- <ion-card-content> -->
+                <ion-grid>
+                  
+                  <ion-row>
+                    <ion-col>
+                      <ion-item *ngFor="let contacto of contactos" class="{{ contacto.person_type }}" (click)="viewContact(contacto.person.id,contacto.person_type)">
+                          <ion-avatar *ngIf="!contacto.avatar" slot="start">
+                            <img class="contact-photo" src="assets/contacto-icon.png">
+                          </ion-avatar>
+                          <ion-avatar *ngIf="contacto.avatar" slot="start">
+                            <img class="contact-photo" src="{{contacto.avatar}}">
+                          </ion-avatar>
+                          <ion-label>
+                            <ion-text>
+                              {{ contacto.person_name }}
+                            </ion-text>
+                            <p>{{ contacto.cargo }}</p>
+                          </ion-label>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+              <!-- </ion-card-content> -->
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+  </section>
+</ion-content>

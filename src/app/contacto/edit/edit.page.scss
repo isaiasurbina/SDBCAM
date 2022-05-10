@@ -1,0 +1,12 @@
+.alert-radio-group button:first-child {
+    display: none !important;
+}
+ion-item ion-row.md {
+    width: 100%;
+}
+ion-item ion-select{
+    min-width: 100%;
+}
+.select-icon {
+    transform: translate3d(0px, 0px, 0px) !important;
+}

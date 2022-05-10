@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    
+    <ion-buttons slot="end">
+      
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="bg-sdb">
+      <div class="container">
+         
+        <ion-row>
+          <ion-col size="12">
+            
+              <ion-item>
+                <ion-avatar slot="start" class="lvl-{{ level.icon }}">
+                  <img class="contact-photo" src="assets/formandos-icon.png">
+                </ion-avatar>
+                <ion-label>
+                  <ion-text>
+                    {{ level.text }}<br>
+                  </ion-text>
+                </ion-label>
+              </ion-item>
+              
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item *ngFor="let contacto of contactos" (click)="viewContact(contacto.id,'formando')">
+                <ion-avatar *ngIf="!contacto.avatar" slot="start">
+                  <img class="contact-photo" src="assets/contacto-icon.png">
+                </ion-avatar>
+                <ion-avatar *ngIf="contacto.avatar" slot="start">
+                  <img class="contact-photo" src="{{contacto.avatar}}">
+                </ion-avatar>
+                <ion-label>
+                  <ion-text>
+                    {{ contacto.firstname }} {{ contacto.lastname }}<br>
+                  </ion-text>
+                  <p>{{ contacto.pais }}</p>
+                  <ion-label color="danger">{{ contacto.txt_nivel }}</ion-label>
+                </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+                
+      </div>
+  </section>
+</ion-content>

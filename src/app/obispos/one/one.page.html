@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <!-- <ion-title slot="start">
+      {{ contacto.fullname }}
+    </ion-title> -->
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="bg-sdb">
+    <ion-card class="">
+      <ion-card-content>
+        
+        <ion-item>
+            <ion-avatar *ngIf="!contacto.avatar"  class="single-contact-avatar">
+              <img src="assets/contacto-icon.png" class="" />
+            </ion-avatar>
+            <ion-avatar *ngIf="contacto.avatar"  class="single-contact-avatar">
+              <img src="{{ contacto.avatar }}" class="" />
+            </ion-avatar>
+            <ion-avatar *ngIf="contacto.id == 5"  class="single-contact-avatar ion-margin">
+              <img src="assets/escudos/Cardinal.png" class="" />
+            </ion-avatar>
+            <ion-avatar *ngIf="contacto.id != 5"  class="single-contact-avatar ion-margin">
+              <img src="assets/escudos/Bishop.png" class="" />
+            </ion-avatar>
+            <ion-label>
+              <ion-text class="ion-text-wrap">{{ contacto.fullname }}</ion-text>
+              <p>{{ contacto.diocesis }}</p>
+            </ion-label>
+        </ion-item>
+        
+        
+        <ion-item *ngIf="contacto.d_address">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-text class="ion-padding">{{ contacto.d_address }}</ion-text>
+          
+        </ion-item>
+        <a href="tel:{{contacto.phone}}" target="_system">
+        <ion-item *ngIf="contacto.phone"> 
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>
+            <ion-text>Tel: {{ contacto.phone }}</ion-text>
+          </ion-label>
+        </ion-item>
+        </a>
+        <a href="mailto:{{contacto.email_1}}" target="_system">
+        <ion-item *ngIf="contacto.email_1">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>
+            <ion-text>Email: {{ contacto.email_1 }}</ion-text>
+          </ion-label>
+        </ion-item>
+        </a>
+
+        <ion-item *ngIf="contacto.friendly_primera_profesion">
+          <ion-avatar slot="start" >
+            <img src="assets/funcion-icon.png" class="round-0" />
+          </ion-avatar>
+          <ion-label>
+            <ion-text>{{ contacto.friendly_primera_profesion }}</ion-text>
+            <p><small>Primera Profesion</small></p>
+          </ion-label>
+        </ion-item>
+      
+        <ion-item *ngIf="contacto.friendly_ordenacion_sacerdotal">
+          <ion-avatar slot="start" >
+            <img src="assets/funcion-icon.png" class="round-0" />
+          </ion-avatar>
+          <ion-label>
+            <ion-text>{{ contacto.friendly_ordenacion_sacerdotal }}</ion-text>
+            <p><small>Ordenación Sacerdotal</small></p>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="contacto.friendly_ordenacion_obispo">
+          <ion-avatar slot="start" >
+            <img src="assets/funcion-icon.png" class="round-0" />
+          </ion-avatar>
+          <ion-label>
+            <ion-text>{{ contacto.friendly_ordenacion_obispo }}</ion-text>
+            <p><small>Ordenación como Obispo</small></p>
+          </ion-label>
+        </ion-item>
+
+        
+
+      </ion-card-content>
+    </ion-card>
+    <ion-item-divider class="divider-transparent"></ion-item-divider>
+  </section>
+</ion-content>

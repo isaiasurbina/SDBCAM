@@ -1,0 +1,86 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+.bg-sdb{
+    background: url('assets/PatronGranada.jpg') repeat-y center center white;
+    min-height: 100%;
+    background-size: 100%;
+    position: relative;
+}
+img.app-header-logo {
+    height: auto;
+    width: 70px;
+}
+.round-0{
+    border-radius: 0;
+}
+ion-avatar img.round-0{
+    object-fit: contain;
+}
+.divider-transparent{
+    background: transparent;
+}
+.text-truncate{
+white-space: nowrap; 
+overflow: hidden;
+text-overflow: ellipsis; 
+}
+.consejo-header{
+    width: 50%;
+    height: auto;
+}
+.new-content img {
+    float: left;
+    margin-right: 20px;
+    width: 30% !important;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+ion-title.text-truncate{
+    min-width: 70%;
+}
+a {
+    text-decoration: none !important;
+}
+img.home-button {
+    padding: 7px;
+}
+.home-button-container ~ ion-title{
+    padding-left: 0 !important;
+}
+img.logo-asociaciones {
+    width: 70%;
+    display: block;
+    margin: 10px auto;
+}
+.bg-white{
+    background-color: white;
+}
+.lectura-item img{
+    display: none !important;
+}

@@ -1,0 +1,46 @@
+<ion-content>
+  <section class="bg-sdb ion-padding-top">
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="4" class="ion-margin-top">
+        <img src="assets/LogoSDBCAM@4x.png" class="app-login-logo ion-margin-top" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" class="ion-margin-bottom">
+        <ion-card>
+          <ion-card-content>
+            <form>
+              <ion-item lines="full">
+                <ion-label position="floating">Correo electrónico</ion-label>
+                <ion-input type="text" [(ngModel)]="login.email" name="email" required></ion-input>
+              </ion-item>
+              
+              <ion-item lines="full">
+                <ion-label position="floating">Clave</ion-label>
+                <ion-input type="password" [(ngModel)]="login.password" name="password" required></ion-input>
+              </ion-item>
+              
+              <ion-row>
+                <ion-col>
+                  <ion-button type="submit" (click)="loginStart()"  color="primary" expand="block">Ingresar</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="ion-text-center">
+                  <a [routerLink]="['/forgot-password']" class="small-text">Recordar contraseña</a>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" class="ion-margin-top">
+            <img src="assets/LogoCAM_Color_horizontal_sin-caja.png" class="app-login-logo ion-margin-top" />
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </section>
+</ion-content>

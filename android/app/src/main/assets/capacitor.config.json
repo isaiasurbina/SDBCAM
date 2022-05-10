@@ -1,0 +1,16 @@
+{
+	"appId": "org.salesianoscentroamerica.directory",
+	"appName": "SDB CAM",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "www",
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 3000,
+			"launchAutoHide": true,
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP"
+		}
+	},
+	"cordova": {}
+}

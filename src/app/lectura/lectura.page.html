@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <ion-buttons slot="end">
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item-divider>
+    Lectura del dia
+  </ion-item-divider>
+  <section class="bg-sdb">
+    <ion-row *ngFor="let item of data" >
+      <ion-col>
+        <ion-card>
+          
+          <ion-card-content class="new-content">
+            <ion-card-title>{{ item.title }}</ion-card-title>
+            <div [innerHTML]="item.description" class="new-content"></div>
+            <ion-text><a target="_system" href="{{ item.link }}">Leer</a></ion-text>
+            <p><small>{{ item.pubDate.substring(0,12) }}</small></p>
+            
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </section>
+</ion-content>

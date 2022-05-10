@@ -1,0 +1,7 @@
+{
+  "name": "SDB CAM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

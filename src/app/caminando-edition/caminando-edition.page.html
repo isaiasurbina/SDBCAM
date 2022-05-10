@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <ion-buttons slot="end">
+      
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="bg-sdb">
+    <div class="container">
+      <ion-item>
+        <ion-text color="danger">
+          CAMINANDO
+        </ion-text>
+        <ion-text slot="end">
+          {{ edicion.title }}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+          <img src="{{ edicion.mainbanner }}" class="edicion-banner" />
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let post of posts" (click)="viewPost(post);">
+          <ion-text>{{ post.title }}</ion-text>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </section>
+</ion-content>

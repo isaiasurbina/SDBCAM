@@ -1,0 +1,96 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">
+      <img src="assets/LogoSDBCAM@4x.png" class="app-header-logo" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/contactos']">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button  [routerLink]="['/calendario']">
+        <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
+      </ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section *ngIf="loading==true" class="bg-sdb ion-padding-top">
+    <ion-card>
+      <ion-card-content class="ion-text-center">
+          <h3><ion-spinner name="dots"></ion-spinner></h3>
+          Cargando
+      </ion-card-content>
+    </ion-card>
+  </section>
+  <section *ngIf="loading==false"  class="bg-sdb ion-padding-top">
+      <!-- Actividades del dia -->
+      <ion-card *ngIf="todayActivities.length > 0">
+        <ion-card-header class="actividades-header">Actividades de hoy</ion-card-header>
+        <ion-card-content>
+
+          <ion-list>
+            <ion-item *ngFor="let actividad of todayActivities" (click)="viewActivity(actividad.id)">
+                <ion-avatar slot="start">
+                  <img *ngIf="actividad.iconfile != false" class="round-0" src="{{ actividad.iconfile }}" />
+                  <img *ngIf="actividad.iconfile == false" class="round-0" src="assets/m-icons/actividad-default-icono.png" />
+                </ion-avatar>
+                <ion-label>
+                  <ion-text>{{ actividad.title }}</ion-text>  
+                  <p>{{ actividad.place }}</p>
+                </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <!-- cumpleaños y aniversarios -->
+      <ion-card *ngIf="todaybdays.length > 0"  >
+        <ion-card-header>Cumpleaños y aniversarios de hoy</ion-card-header>
+        <ion-card-content>
+          <ion-item *ngFor="let bday of todaybdays" (click)="viewContact(bday.id,bday.type)">
+              <ion-avatar slot="start">
+                <img class="round-0" src="assets/cakecolor.png">
+              </ion-avatar>
+              <ion-label>
+                <ion-text>{{ bday.nombre }}</ion-text>
+                <p>{{ bday.descripcion }}</p>
+              </ion-label>
+          </ion-item>
+          
+          
+        </ion-card-content>
+      </ion-card>
+
+      <!-- noticias del boletin -->
+      <ion-card>
+        <img src="{{ bsArticle.image }}" />
+        <ion-card-content>
+          <ion-card-title>{{ bsArticle.title }}</ion-card-title>
+          <ion-text><a target="_system" href="{{ bsArticle.link }}">Ir a la noticia</a></ion-text>
+          <p><small>boletinsalesiano.info - {{ bsArticle.date }}</small></p>
+          
+        </ion-card-content>
+      </ion-card>
+      <!-- caminando -->
+      <ion-card (click)="viewEdicion(caminando)">
+        <img class="ion-float-left" src="{{ caminando.banner }}" />
+      </ion-card>
+      <!-- Salmo o frase -->
+      
+          <ion-card class="lectura-item" *ngFor="let item of lectura">
+            <ion-card-content class="new-content">
+              <ion-card-title>{{ item.title }}</ion-card-title>
+              <div [innerHTML]="item.description" class="new-content"></div>
+              <ion-text><a target="_system" href="{{ item.link }}">Leer</a></ion-text>
+              <p><small>{{ item.pubDate.substring(0,12) }}</small></p>
+            </ion-card-content>
+          </ion-card>
+      
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="6" class="ion-margin">
+          <img src="assets/LogoCAM_Color_horizontal_sin-caja.png" class="app-login-logo ion-margin-top" />
+        </ion-col>
+      </ion-row>
+  </section>
+</ion-content>

@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    
+    <ion-buttons slot="end">
+      
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-divider>
+    Consejo Inspectorial
+  </ion-item-divider>
+  <section class="bg-sdb">
+      <div class="container">
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-content>
+                <ion-grid> 
+                  <ion-row>
+                    <ion-col size="12"  class="ion-text-center">
+                      <img src="assets/LogoCAM_Color_horizontal_sin-caja.png" class="consejo-header" />
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      
+                        <ion-item>
+                          <p>
+                            32 Calle 11-01, Las Charcas, Zona 11 01011<br>
+                            Guatemala, Guatemala
+                          </p>
+                        </ion-item>
+                        <a href="tel:50222164545" target="_system">
+                          <ion-item>
+                              <ion-icon slot="start" name="call-outline"></ion-icon>
+                              <ion-label>
+                                <ion-text>PBX: (502) 2216-4545</ion-text>
+                              </ion-label>
+                          </ion-item>
+                        </a>
+                        <a href="mailto:asdbosco@salesianoscam.org" target="_system">
+                          <ion-item>
+                            <ion-icon slot="start" name="mail-outline"></ion-icon>
+                            <ion-label>
+                                asdbosco@salesianoscam.org
+                            </ion-label>
+                          </ion-item>
+                        </a>
+                        
+                      
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-item *ngFor="let contacto of contactos" (click)="viewContact(contacto.person.id,contacto.person_type)">
+                          <ion-avatar *ngIf="!contacto.avatar" slot="start">
+                            <img class="contact-photo" src="assets/contacto-icon.png">
+                          </ion-avatar>
+                          <ion-avatar *ngIf="contacto.avatar" slot="start">
+                            <img class="contact-photo" src="{{contacto.avatar}}">
+                          </ion-avatar>
+                          <ion-label>
+                            <ion-text>
+                              {{ contacto.person_name }}<br>
+                            </ion-text>
+                            <ion-label color="danger">{{ contacto.cargo }}</ion-label>
+                            <p>{{ contacto.person.email_1 }}</p>
+                          </ion-label>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+  </section>
+</ion-content>

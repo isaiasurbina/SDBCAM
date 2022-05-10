@@ -1,0 +1,121 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <ion-buttons *ngIf="checkuserprofile(contacto.email_1)" (click)="frmEdit(contacto.id)" slot="end">
+      <ion-fab-button size="small" color="primary"><ion-icon name="pencil-outline"></ion-icon></ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="bg-sdb">
+    <ion-card class="">
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <ion-avatar *ngIf="!contacto.avatar"  class="single-contact-avatar">
+              <img src="assets/contacto-icon.png" class="" />
+            </ion-avatar>
+            <ion-avatar *ngIf="contacto.avatar"  class="single-contact-avatar">
+              <img src="{{ contacto.avatar }}" class="" />
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <h2 class="ion-text-wrap">{{ contacto.fullname }}</h2>
+          </ion-col>
+        </ion-row>
+        <a href="tel:{{ contacto.phone }}" target="_system">
+          <ion-item *ngIf="contacto.phone">
+            <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
+            <ion-label>
+              <ion-text>{{ contacto.phone }}</ion-text>
+              <p>Mobil</p>
+            </ion-label>
+          </ion-item>
+        </a>
+        <a href="mailto:{{ contacto.phone }}" target="_system">
+          <ion-item *ngIf="contacto.email_1">
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-label class="ion-text-wrap">
+              {{ contacto.email_1 }}
+              <p>Email 1</p>
+            </ion-label>
+          </ion-item>
+        </a>
+        <a href="mailto:{{ contacto.email_2 }}" target="_system">
+          <ion-item *ngIf="contacto.email_2">
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-label class="ion-text-wrap">
+              {{ contacto.email_2 }}
+              <p>Email 2</p>
+            </ion-label>
+          </ion-item>
+        </a>
+      
+        <ion-item *ngIf="contacto.home">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>
+            <ion-text>{{ contacto.home }}</ion-text>
+            <p>Casa Asignada</p>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="contacto.formation_level_text">
+          <!-- <ion-icon slot="start" name="mail-outline"></ion-icon> -->
+          <ion-label>
+            <ion-text>{{ contacto.formation_level_text }}</ion-text>
+            <p>Nivel de formación</p>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="contacto.year_level_text">
+          <!-- <ion-icon slot="start" name="mail-outline"></ion-icon> -->
+          <ion-label>
+            <ion-text>{{ contacto.year_level_text }}</ion-text>
+            <p>Año de formación </p>
+          </ion-label>
+        </ion-item>
+        
+        
+          <ion-item *ngIf="contacto.friendlyBday">
+            <ion-avatar slot="start" >
+              <img src="assets/cake.png" class="round-0" />
+            </ion-avatar>
+            <ion-label>
+              <ion-text>{{ contacto.friendlyBday }}</ion-text>
+              <p>Cumpleaños</p>
+            </ion-label>
+          </ion-item>
+          <ion-item *ngIf="contacto.friendly_profession_date">
+            <ion-avatar slot="start" >
+              <img src="assets/funcion-icon.png" class="round-0" />
+            </ion-avatar>
+            <ion-label>
+              <ion-text>{{ contacto.friendly_profession_date }}</ion-text>
+              <p>Primera Profesion</p>
+            </ion-label>
+          </ion-item>
+          
+        
+
+        <section *ngIf="contacto.death_date != null">
+          <ion-item>
+            <ion-avatar slot="start" >
+              <img src="assets/funcion-icon.png" class="round-0" />
+            </ion-avatar>
+            <ion-label>
+              <ion-text>{{ contacto.friendly_death_date }}</ion-text>
+              <p>Fecha de defuncion</p>
+            </ion-label>
+          </ion-item>
+        </section>
+
+      </ion-card-content>
+    </ion-card>
+    <ion-item-divider class="divider-transparent"></ion-item-divider>
+  </section>
+</ion-content>

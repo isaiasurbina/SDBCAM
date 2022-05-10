@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <ion-buttons slot="end">
+      
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="bg-sdb">
+    <div class="container">
+
+      <ion-card>
+        <div *ngIf="article.banner">
+          <img src="{{ article.banner }}" />
+        </div>
+        <ion-card-content>
+          <ion-card-title>{{ article.title }}</ion-card-title>
+        </ion-card-content>
+        <ion-card-content [innerHTML]="article.desc">
+            
+        </ion-card-content>
+      </ion-card>
+      
+    </div>
+  </section>
+
+</ion-content>

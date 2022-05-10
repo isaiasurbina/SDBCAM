@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+    <ion-title slot="start">
+      Formandos
+    </ion-title>
+    <ion-buttons slot="end">
+      
+      <ion-fab-button color="secondary" size="small">
+        <ion-menu-button></ion-menu-button>
+      </ion-fab-button>
+      
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="bg-sdb">
+      
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item *ngFor="let level of levels" (click)="viewLevel(level.id,level.text,level.icon)">
+                          <ion-avatar slot="start" class="lvl-{{ level.icon }}">
+                            <img class="contact-photo" src="assets/formandos-icon.png">
+                          </ion-avatar>
+                          <ion-label>
+                            <ion-text>
+                              {{ level.text }}<br>
+                            </ion-text>
+                          </ion-label>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+              
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      
+  </section>
+</ion-content>

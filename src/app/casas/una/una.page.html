@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar [routerLink]="['/']" class="home-button-container" slot="start">
+      <img src="assets/icon/favicon.png" class="home-button" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let casa of data"  >
+      <ion-item>
+        <ion-avatar *ngIf="!casa.logo" slot="start">
+          <img class="contact-photo" src="assets/m-icons/casas-icon.png">
+        </ion-avatar>
+        <ion-avatar *ngIf="casa.logo" slot="start">
+          <img class="contact-photo" src="{{casa.logo}}">
+        </ion-avatar>
+        <ion-label>
+          <ion-text class="ion-text-wrap">{{ casa.title }}</ion-text>
+          <p>{{ casa.ciudad }}, {{ casa.provincia }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let direccion of casa.direcciones | keyvalue" >
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        <ion-text>
+          <p>{{ direccion.value }}</p>
+        </ion-text>
+      </ion-item>
+      <a *ngFor="let tel of casa.telefonos | keyvalue" href="tel:{{ tel.value }}" target="_system">
+        <ion-item>
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-text>
+            <p>{{ tel.value }}</p>
+          </ion-text>
+        </ion-item>
+      </a>
+      <a href="mailto:{{ casa.email1 }}" target="_system">
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            {{ casa.email1 }}
+          </ion-label>
+        </ion-item>
+      </a>
+      <a href="mailto:{{ casa.email2 }}" target="_system">
+        <ion-item *ngIf="casa.email2!=null" >
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+          {{ casa.email2 }}
+          </ion-label>
+        </ion-item>
+      </a>
+      <a href="http://{{ casa.website }}" target="_system">
+        <ion-item *ngIf="casa.website!=null">
+          <ion-icon name="globe-outline" slot="start"></ion-icon>
+          <ion-text>
+            <p>{{ casa.website }}</p>
+          </ion-text>
+        </ion-item>
+      </a>
+      <a href="https://www.facebook.com/{{ casa.facebook }}" target="_system">
+        <ion-item *ngIf="casa.facebook!=null" >
+          <ion-icon name="logo-facebook" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            
+              {{ casa.facebook }}
+            
+          </ion-label>
+        </ion-item>
+      </a>
+      <a href="https://instagram.com/{{ casa.instagram }}" target="_system">
+        <ion-item *ngIf="casa.instagram!=null" >
+          <ion-icon name="logo-instagram" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            {{ casa.instagram }}
+          </ion-label>
+        </ion-item>
+      </a>
+      <a href="https://youtube.com/{{ casa.youtube }}" target="_system">
+        <ion-item *ngIf="casa.youtube!=null" >
+          <ion-icon name="logo-youtube" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            {{ casa.youtube }}
+          </ion-label>
+        </ion-item>
+      </a>
+      <a href="https://twitter.com/{{ casa.twitter }}" target="_system">
+        <ion-item *ngIf="casa.twitter!=null" >
+          <ion-icon name="logo-twitter" slot="start"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            {{ casa.twitter }}
+          </ion-label>
+        </ion-item>
+      </a>
+      <ion-item *ngIf="casa.desc!=null">
+        <ion-text>
+          <p>{{ casa.desc }}</p>
+        </ion-text>
+      </ion-item>
+      <ion-item *ngFor="let contacto of casa.salesianos" (click)="viewContact(contacto.id, 'contact')">
+          <ion-avatar *ngIf="!contacto.avatar" slot="start">
+            <img class="contact-photo" src="assets/contacto-icon.png">
+          </ion-avatar>
+          <ion-avatar *ngIf="contacto.avatar" slot="start">
+            <img class="contact-photo" src="{{contacto.avatar}}">
+          </ion-avatar>
+          <ion-label>
+            <ion-text>{{ contacto.firstname }} {{ contacto.lastname }}</ion-text>
+            <p class="badge" *ngFor="let funcion of contacto.funciones">{{funcion.name}}</p>
+          </ion-label>
+      </ion-item>
+      <ion-item-divider *ngIf="casa.formandos.length > 0" >Formandos</ion-item-divider>
+      <ion-item *ngFor="let contacto of casa.formandos" (click)="viewContact(contacto.id, 'formando')">
+          <ion-avatar *ngIf="!contacto.avatar" slot="start">
+            <img class="contact-photo" src="assets/contacto-icon.png">
+          </ion-avatar>
+          <ion-avatar *ngIf="contacto.avatar" slot="start">
+            <img class="contact-photo" src="{{contacto.avatar}}">
+          </ion-avatar>
+          <ion-label>
+            <ion-text>{{ contacto.firstname }} {{ contacto.lastname }}</ion-text>
+            <p class="badge" *ngFor="let funcion of contacto.funciones">{{funcion.name}}</p>
+          </ion-label>
+      </ion-item>
+      
+  </ion-card>
+</ion-content>
